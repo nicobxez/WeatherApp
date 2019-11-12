@@ -11,7 +11,7 @@ const icons = {
     [RAIN]: "rain",
     [SNOW]: "snow",
     [WINDY]: "windy"
-};
+}
 
 const getWeatherIcon = weatherState => {
     const icon = icons[weatherState];
@@ -21,7 +21,7 @@ const getWeatherIcon = weatherState => {
         return <WeatherIcons className="wicon" name={icon} size={sizeIcon}></WeatherIcons>;
     else
         return <WeatherIcons className="wicon" name={"day-sunny"} size="2x"></WeatherIcons>;
-};
+}
 
 const WeatherTemperature = ({temperature, weatherState}) => (
     <div className="weatherTemperatureCont">
@@ -29,11 +29,11 @@ const WeatherTemperature = ({temperature, weatherState}) => (
         <span className="temperature">{ `${temperature}` }</span>
         <span className="temperatureType">{`Cº`}</span>
     </div>
-);
+)
 
 WeatherTemperature.propTypes = {
     temperature: PropTypes.number,
     weatherState: PropTypes.string.isRequired
-};
+}
 
 export default WeatherTemperature;
