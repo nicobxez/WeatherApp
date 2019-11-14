@@ -4,12 +4,12 @@ import WeatherExtraInfo from './WeatherExtraInfo';
 import WeatherTemperature from './WeatherTemperature';
 import './styles.css';
 
-const WeatherData = ({ data: {temperature, weatherState, humidity, wind} }) => ( // Double Destructuring
+const WeatherData = ({ data: { temperature, weatherState, humidity, wind } }) => ( // Double Destructuring
     <div className="weatherDataCont">
-        <WeatherTemperature temperature={temperature} weatherState={weatherState}></WeatherTemperature>
-        <WeatherExtraInfo humidity={humidity} wind={wind}></WeatherExtraInfo>
+        <WeatherTemperature temperature={ temperature } weatherState={ weatherState }></WeatherTemperature>
+        <WeatherExtraInfo humidity={ humidity } wind={ wind }></WeatherExtraInfo>
     </div>
-)
+);
 
 WeatherData.propTypes = {
     data: PropTypes.shape ({
@@ -18,6 +18,6 @@ WeatherData.propTypes = {
         humidity: PropTypes.number.isRequired,
         wind: PropTypes.string.isRequired,
     })
-}
+};
 
 export default WeatherData;
