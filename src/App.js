@@ -1,13 +1,28 @@
-import React from 'react';
-import WeatherLocation from './components/WeatherLocation'; // It is a component that contains location and weather data
+import React, { Component } from 'react';
 import './App.css';
+import LocationList from './components/LocationList';
 
-function App() {
-  return (
-    <div className="App">
-      <WeatherLocation></WeatherLocation>
-    </div>
-  );
+const cities = [
+  'Mar del Plata,ar',
+  'Buenos Aires,ar',
+  'Santiago,cl',
+  'Brasil,br',
+  'Washington,us',
+  'Madrid,es',
+]
+
+class App extends Component {
+  handleSelectedLocation = city => {
+    console.log(`handleSelectedLocation = ${city}`);
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <LocationList cities={cities} onSelectedLocation={ this.handleSelectedLocation }></LocationList>
+      </div>
+    );
+  }
 }
 
 export default App;
