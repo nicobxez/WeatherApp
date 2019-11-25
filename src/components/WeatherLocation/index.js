@@ -8,26 +8,17 @@ import WeatherData from './WeatherData';
 import './styles.css';
 
 class WeatherLocation extends Component {
-
     constructor(props) { 
         super(props);
         const { city } = props;
         this.state = { city, data: null };
     };
 
-    componentDidMount() {
-        this.handleUpdateClick();
-    }
-    
-    componentDidUpdate(prevProps, prevState) {
-        
-    }
+    componentDidMount() { this.handleUpdateClick() }
 
     handleUpdateClick = () => { 
         const apiWeather = getUrlWeatherByCity(this.state.city);
-        fetch(apiWeather)
-        .then( resolve => { return resolve.json() })
-        .then( data => {
+        fetch(apiWeather).then( data => data.json() ).then( data => {
             const newWeather = transformWeather(data);
             this.setState({ data: newWeather });
         });
@@ -36,10 +27,11 @@ class WeatherLocation extends Component {
     render() {
         const { onWeatherLocationClick } = this.props;
         const { city, data } = this.state;
+
         return (   
             <div className="weatherLocationCont" onClick={ onWeatherLocationClick }>
-             <Location city={ city }></Location>
-             { data ? <WeatherData data={ data }></WeatherData> : <CircularProgress size={50}></CircularProgress> }
+                <Location city={ city }></Location>
+                { data ? <WeatherData data={ data }></WeatherData> : <CircularProgress size={50}></CircularProgress> }
             </div>
         );
     };
